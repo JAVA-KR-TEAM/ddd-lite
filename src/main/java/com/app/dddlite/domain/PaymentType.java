@@ -1,5 +1,5 @@
 package com.app.dddlite.domain;
 
-public enum Payment {
+public enum PaymentType {
     CARD, MOBILE
 }
