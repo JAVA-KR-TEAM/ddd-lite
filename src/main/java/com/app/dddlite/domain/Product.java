@@ -1,19 +1,16 @@
 package com.app.dddlite.domain;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "tb_product")
 public class Product {
     /**
-     * 상품(product) entity
+     * 상품(Product)은 Entity로 고유의 식별성을 가져야한다.
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(name = "name")
+    private String uuid;
     private String name;
-    @Column(name = "price")
-    private Long price;
+    private int price;
 
+    public Product(String uuid, String name, int price) {
+        this.uuid = uuid;
+        this.name = name;
+        this.price = price;
+    }
 }
