@@ -3,21 +3,33 @@ package com.app.dddlite.domain;
 import com.app.dddlite.exception.CustomException;
 import com.app.dddlite.exception.ErrorMessage;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Getter
+@Entity
+@NoArgsConstructor
 public class Order {
     /**
      * 주문(Order)은 Entity로 고유의 식별성을 가져야한다.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private String uuid;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "order_status")
     private OrderStatus orderStatus;
     private DeliveryAddress address;
+    @Column(name = "payment_type")
     private PaymentType paymentType;
-    private List<OrderLine> orderLines;
+
+    @OneToMany
+    private List<OrderLine> orderLines = new ArrayList<>();
 
 
     public Order(DeliveryAddress address, List<OrderLine> orderLines) {
