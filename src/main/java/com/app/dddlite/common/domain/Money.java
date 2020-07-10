@@ -1,4 +1,4 @@
-package com.app.dddlite;
+package com.app.dddlite.common.domain;
 
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -34,8 +34,8 @@ public class Money {
 		return new Money(this.amount.subtract(amount.amount));
 	}
 
-	public Money times(double percent) {
-		return new Money(this.amount.multiply(BigDecimal.valueOf(percent)));
+	public Money times(double quantity) {
+		return new Money(this.amount.multiply(BigDecimal.valueOf(quantity)));
 	}
 
 	public Money divide(double divisor) {
